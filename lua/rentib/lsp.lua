@@ -171,10 +171,13 @@ vim.lsp.config("tinymist", {
     root_markers = { ".git" },
     settings = {
         projectResolution = "lockDatabase",
-        exportPdf = "onSave", -- never/onSave/onType
-        formatterPrintWidth = 80,
-        formatterIndentSize = 4,
-        completion = { triggerOnSnippetPlaceholders = true, },
+        exportPdf = "never", -- never/onSave/onType
+        formatterMode = "typstyle",
+        formatterProseWrap = true,
+        formatterPrintWidth = 79,
+        formatterIndentSize = 2,
+        lint = { enabled = true, when = "onSave" },
+        completion = { triggerOnSnippetPlaceholders = true },
     },
 })
 
