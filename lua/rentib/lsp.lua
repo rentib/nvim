@@ -2,15 +2,8 @@ vim.lsp.config("*", {
     capabilities = vim.tbl_deep_extend(
         "force",
         require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        {
-            textDocument = {
-                completion = {
-                    completionItem = {
-                        snippetSupport = false,
-                    },
-                },
-            },
-        }
+        -- vim.lsp.protocol.make_client_capabilities(),
+        { textDocument = { completion = { completionItem = { snippetSupport = false } } } }
     ),
     root_markers = { ".git" },
 })
@@ -178,6 +171,19 @@ vim.lsp.config("tinymist", {
         formatterIndentSize = 2,
         lint = { enabled = true, when = "onSave" },
         completion = { triggerOnSnippetPlaceholders = true },
+    },
+})
+
+vim.lsp.config("gopls", {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_markers = { "go.work", "go.mod", ".git" },
+    settings = {
+        -- https://go.dev/gopls/settings
+        gopls = {
+            staticcheck = true,
+            gofumpt = true,
+        },
     },
 })
 
