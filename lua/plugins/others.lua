@@ -4,8 +4,9 @@ return {
     { "tpope/vim-rsi",      event = { "InsertEnter", "CmdLineEnter" } },
     { "farmergreg/vim-lastplace" },
 
-    { "stevearc/oil.nvim",     opts = {} },
-    { "stevearc/quicker.nvim", opts = {}, ft = "qf" },
+    { "stevearc/oil.nvim",       opts = {}  },
+    { "stevearc/quicker.nvim",   opts = {}, ft = "qf" },
+    { "lewis6991/gitsigns.nvim", opts = {} },
 
     {
         "Rentib/cliff.nvim",
