@@ -187,6 +187,16 @@ vim.lsp.config("gopls", {
     },
 })
 
+vim.lsp.config("golangci_lint_lsp", {
+    cmd = { "golangci-lint-langserver" },
+    filetypes = { "go", "gomod", "templ" },
+    root_markers = { ".golangci.yml", ".golangci.yaml", ".golangci.toml", ".golangci.json", "go.work", "go.mod", ".git" },
+    init_options = {
+        command = { "golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false" }
+    },
+    settings = {},
+})
+
 vim.lsp.enable({
     "clangd",
     "LuaLS",
