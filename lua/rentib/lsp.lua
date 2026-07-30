@@ -75,6 +75,7 @@ vim.lsp.config("ltex-plus", {
         ltex = {
             enabled = { "bib", "markdown", "plaintex", "tex" },
             language = "en-GB",
+            -- language = "pl-PL",
             additionalRules = {
                 enablePickyRules = true,
                 motherTongue = "pl-PL",
@@ -205,16 +206,57 @@ vim.lsp.config("templ", {
     settings = {},
 })
 
+vim.lsp.config("tailwindcss", {
+    cmd = { "tailwindcss-language-server", "--stdio" },
+    filetypes = { "html", "templ" },
+    root_markers = { ".git" },
+    settings = {
+        tailwindCSS = {
+            validate = true,
+            classAttributes = { 'class', 'className', 'class:list', 'classList', 'ngClass' },
+            lint = {
+                cssConflict = 'warning',
+                invalidApply = 'error',
+                invalidScreen = 'error',
+                invalidVariant = 'error',
+                invalidConfigPath = 'error',
+                invalidTailwindDirective = 'error',
+                recommendedVariantOrder = 'warning',
+            },
+            includeLanguages = {
+                templ = "html",
+            },
+        },
+    },
+    workspace_required = true,
+})
+
+vim.lsp.config("cssls", {
+    cmd = { "vscode-css-language-server", "--stdio" },
+    filetypes = { "css", "scss", "less" },
+    root_markers = { ".git" },
+    settings = {
+        css = { validate = true },
+        less = { validate = true },
+        scss = { validate = true },
+    },
+})
+
 vim.lsp.enable({
     "clangd",
     "LuaLS",
     "texlab",
-    "ltex-plus",
+    -- "ltex-plus",
     "basedpyright",
     "ruff",
     "bash-language-server",
     "harper",
     "tinymist",
+    "gopls",
+    "golangci_lint_lsp",
+    "templ",
+    "tailwindcss",
+    "cssls",
 })
 
 vim.cmd("command! LspStop lua vim.lsp.stop_client(vim.lsp.get_clients())")
@@ -228,11 +270,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         local m = require("keymap")
         local opts = { noremap = true, silent = true, buffer = args.buf }
-        m.n("grn", vim.lsp.buf.rename, opts)
-        m.n("gra", vim.lsp.buf.code_action, opts)
-        m.n("grr", vim.lsp.buf.references, opts)
-        m.n("gri", vim.lsp.buf.implementation, opts)
-        m.n("gO", vim.lsp.buf.document_symbol, opts)
+        m.n("grn", vim.lsp.buf.rename,          opts)
+        m.n("gra", vim.lsp.buf.code_action,     opts)
+        m.n("grr", vim.lsp.buf.references,      opts)
+        m.n("gri", vim.lsp.buf.implementation,  opts)
+        m.n("gO",  vim.lsp.buf.document_symbol, opts)
 
         m.n("<leader>ih", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
