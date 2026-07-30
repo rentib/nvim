@@ -197,6 +197,14 @@ vim.lsp.config("golangci_lint_lsp", {
     settings = {},
 })
 
+vim.filetype.add({ extension = { templ = "templ" } })
+vim.lsp.config("templ", {
+    cmd = { "templ", "lsp" },
+    filetypes = { "templ" },
+    root_markers = { "go.work", "go.mod", ".git" },
+    settings = {},
+})
+
 vim.lsp.enable({
     "clangd",
     "LuaLS",
