@@ -1,12 +1,13 @@
 return {
     "saghen/blink.cmp",
     event = { "InsertEnter" },
+    version = "1.*",
     build = "cargo build --release",
     opts = {
         keymap = {
-            ["<C-n>"]     = { "select_next", "fallback" },
-            ["<C-p>"]     = { "select_prev", "fallback" },
-            ["<C-e>"]     = { "cancel", "fallback" },
+            ["<C-n>"]     = { "select_next",       "fallback" },
+            ["<C-p>"]     = { "select_prev",       "fallback" },
+            ["<C-e>"]     = { "cancel",            "fallback" },
             ["<C-y>"]     = { "select_and_accept", "fallback" },
             ["<C-space>"] = { "select_and_accept", "fallback" },
         },
