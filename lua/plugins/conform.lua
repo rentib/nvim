@@ -5,14 +5,13 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                c = { "clang-format" },
-                cpp = { "clang-format" },
-                css = { "prettier" },
-                json = { "jq" },
+                c      = { "clang-format" },
+                cpp    = { "clang-format" },
+                json   = { "jq" },
+                shell  = { "shfmt" },
+                css    = { "prettier" },
                 python = { "ruff_format" },
-                shell = { "shfmt" },
-                typst = { "typstyle" },
-                templ = { "templ", "prettier" },
+                templ  = { "templ", "prettier" },
             },
         })
 
