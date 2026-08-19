@@ -9,7 +9,7 @@ return {
     { "lewis6991/gitsigns.nvim", opts = {} },
 
     {
-        "Rentib/cliff.nvim",
+        "rentib/cliff.nvim",
         keys = {
             { "<c-j>", mode = { "n", "v", "o" }, function() require("cliff").go_down() end },
             { "<c-k>", mode = { "n", "v", "o" }, function() require("cliff").go_up() end },
@@ -21,21 +21,4 @@ return {
     { "akinsho/flutter-tools.nvim", enabled = false, ft = "dart", dependencies = { "nvim-lua/plenary.nvim" }, opts = {} },
     { "mrcjkb/rustaceanvim",        enabled = false, version = "^9" },
     { 'mrcjkb/haskell-tools.nvim',  enabled = false, version = "^6" },
-
-    -- llm
-    {
-        "zbirenbaum/copilot.lua",
-        enabled = false,
-        cmd = "Copilot",
-        config = function()
-            require("copilot").setup({
-                suggestion = {
-                    enabled = true,
-                    auto_trigger = true,
-                    debounce = 50,
-                    keymap = { accept = "<c-l>" },
-                },
-            })
-        end,
-    },
 }
