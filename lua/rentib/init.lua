@@ -9,6 +9,5 @@ end
 
 safe_require("rentib.mappings")
 safe_require("rentib.options")
-safe_require("rentib.autocmds")
 safe_require("rentib.lazy")
 safe_require("rentib.lsp")
